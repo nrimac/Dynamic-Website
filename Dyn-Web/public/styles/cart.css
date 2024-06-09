@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Quicksand-Regular";
+  font-size: larger;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Quicksand-Regular;
+  src: url("../fonts/Quicksand-Regular.ttf");
+}
+
+.container {
+  display: inline;
+}
+
+/*HEADER*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0.5vw;
+}
+
+header * {
+  margin: 0 2%;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.logo img {
+  width: 3em;
+}
+
+.logo em {
+  font-style: normal;
+  width: 50%;
+}
+
+.naslov {
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  position: relative;
+}
+
+.search-bar p {
+  text-align: center;
+  user-select: none;
+  font-size: 1.5rem;
+  position: absolute;
+  color: white;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  top: 0;
+  left: 0;
+}
+
+.search-bar img {
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0 1vw;
+}
+
+.search-bar img:hover {
+  filter: drop-shadow(0 0 4px black);
+}
+
+/*MAIN*/
+
+.kosarica {
+  font-size: large;
+}
+
+.cartProduct {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+.cartProduct button {
+  cursor: pointer;
+  background-color: rgb(255, 59, 91);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.1em;
+  width: 2em;
+  height: 1.5em;
+  transition: 0.3s;
+}
+
+.cartProduct button:hover {
+  background-color: rgb(255, 59, 91, 0.8);
+}
