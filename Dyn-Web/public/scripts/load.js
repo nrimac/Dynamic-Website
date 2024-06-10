@@ -16,50 +16,18 @@ function setup() {
   }
 
   for (let i = 0; i < liElements.length; i++) {
-    liElements[i].onclick = changeCategory;
+    liElements[i].onclick = setup;
   }
 
-  if (sessionStorage.getItem("cartCounter") !== null && sessionStorage.getItem("cartCounter") !== 0) {
+  if (
+    sessionStorage.getItem("cartCounter") !== null &&
+    sessionStorage.getItem("cartCounter") !== 0
+  ) {
     cartCounter.innerText = sessionStorage.getItem("cartCounter");
     cartCounter.style = "display: flex";
   } else {
     cartCounter.style = "display: none";
   }
-}
-
-function changeCategory() {
-  let chosenCategory;
-  data.categories.forEach((category) => {
-    if (category.name === this.innerText) {
-      chosenCategory = category;
-    }
-  });
-
-  const articles = document.querySelector(".artikli");
-  articles.innerHTML = "";
-
-  chosenCategory.products.forEach((product) => {
-    const article = document.createElement("article");
-    article.innerHTML = `
-        <div class="card" onclick="cardClicked()">
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-          style="width: 100%"
-        />
-        <div class="card-container">
-          <p><b>${product.name}</b></p>
-        </div>
-        <h5 style="display: none;">0</h5>
-      </div>
-        `;
-    articles.appendChild(article);
-  });
-
-  const naslov = document.querySelector(".naslov");
-  naslov.innerText = chosenCategory.name;
-
-  setup();
 }
 
 function cardClicked() {
@@ -88,4 +56,4 @@ function saveState(card) {
 }
 
 setup();
-document.getElementsByTagName("li")[0].onclick();
+//document.getElementsByTagName("li")[0].onclick();

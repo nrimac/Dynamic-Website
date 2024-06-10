@@ -108,6 +108,11 @@ main {
   list-style: none;
 }
 
+.main-left a {
+  text-decoration: none;
+  color: black;
+}
+
 .main-left ul li {
   text-align: center;
   padding: 1vh;
