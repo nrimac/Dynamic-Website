@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kategorije</title>
+  </head>
+  <body>
+    <h1>Kategorije:</h1>
+    <ul>
+      <% locals.categories.forEach(category => { %>
+      <li>
+        <h3><%= category.name %></h3>
+        <p><%= category.products %></p>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
