@@ -12,18 +12,30 @@ function getCategoryObjectByName(name) {
 }
 
 router.get("/", (req, res) => {
-  res.redirect("/home/getProducts/guitars");
+  res.redirect("/home/getCategories");
+});
+
+router.get("/getProducts", (req, res) => {
+  res.redirect("/home/getProducts/gitare");
 });
 
 data.categories.forEach((category) => {
-  let categoryName = category.name.toLowerCase().trim().replace(/ /g, '%20');
-  router.get(`/${categoryName}`, (req, res) => {
+  let categoryName = category.name
+    .toLowerCase()
+    .trim()
+    .replace(/ /g, "%20")
+    .replace(/č/g, "%C4%8D")
+    .replace(/ć/g, "%C4%87");
+  router.get(`/getProducts/${categoryName}`, (req, res) => {
     res.render("home.ejs", getCategoryObjectByName(category.name));
   });
 });
 
-router.get("/categories", (req, res) => {
-  res.render("temp.ejs", { categories: data.categories });
+router.get("/getCategories", (req, res) => {
+  res.render("categories.ejs", {
+    categories: data.categories,
+    categoryName: "Categories",
+  });
 });
 
 module.exports = router;

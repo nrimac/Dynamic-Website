@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/categories.css" />
+    <title>Kategorije</title>
+  </head>
+  <body>
+    <h1>Kategorije:</h1>
+    <ul class="kategorije">
+      <% categories.forEach(category => { %>
+      <a href="/home/getProducts/<%= category.name %>">
+        <li>
+          <h3><%= category.name %></h3>
+
+          <!-- <p><%= category.products %></p> -->
+        </li>
+      </a>
+      <% }); %>
+    </ul>
+  </body>
+</html>

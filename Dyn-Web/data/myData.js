@@ -2,7 +2,7 @@ const data = {
   website: "Random Web Shop",
   categories: [
     {
-      name: "Guitars",
+      name: "Gitare",
       products: [
         {
           name: "Rock Gitara",
@@ -27,7 +27,7 @@ const data = {
       ],
     },
     {
-      name: "Toys",
+      name: "Igračke",
       products: [
         {
           name: "Fidget-spinner",
@@ -52,7 +52,7 @@ const data = {
       ],
     },
     {
-      name: "Carpets",
+      name: "Tepisi",
       products: [
         {
           name: "Moderni Tepih",
@@ -77,7 +77,7 @@ const data = {
       ],
     },
     {
-      name: "Climbing Gear",
+      name: "Penjačka Oprema",
       products: [
         {
           name: "Konop",
@@ -102,7 +102,7 @@ const data = {
       ],
     },
     {
-      name: "Consoles",
+      name: "Igraće Konzole",
       products: [
         {
           name: "Gameboy",
@@ -127,7 +127,7 @@ const data = {
       ],
     },
     {
-      name: "Doors",
+      name: "Vrata",
       products: [
         {
           name: "Drvena Vrata",
@@ -152,7 +152,7 @@ const data = {
       ],
     },
     {
-      name: "Paintings",
+      name: "Slike",
       products: [
         {
           name: "Eterična Harmonija",
@@ -177,7 +177,7 @@ const data = {
       ],
     },
     {
-      name: "Pants",
+      name: "Hlače",
       products: [
         {
           name: "Poslovne Hlače",
@@ -202,7 +202,7 @@ const data = {
       ],
     },
     {
-      name: "Shirts",
+      name: "Majice",
       products: [
         {
           name: "Casual Košulja",
@@ -227,7 +227,7 @@ const data = {
       ],
     },
     {
-      name: "Tvs",
+      name: "Televizori",
       products: [
         {
           name: "4K TV",
