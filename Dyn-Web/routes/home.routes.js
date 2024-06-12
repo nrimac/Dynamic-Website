@@ -32,9 +32,19 @@ data.categories.forEach((category) => {
     .replace(/ć/g, "%C4%87");
 
   router.get(`/getProducts/${categoryName}/:id`, (req, res) => {
+    let chosenProduct = null;
+    category.products.forEach((product) => {
+      if (product.id == req.params.id) chosenProduct = product;
+    });
+    if (!chosenProduct) {
+      res.status(404).json({ message: "Product not found" });
+      return;
+    }
+    chosenProduct.quantity++;
+
     if (typeof req.session.cart === "undefined") {
       req.session.cart = [];
-      req.session.cart.push({ id: req.params.id, quantity: 1 });
+      req.session.cart.push(chosenProduct);
       req.session.cartQuantity = 1;
     } else {
       const cart = req.session.cart;
@@ -49,15 +59,11 @@ data.categories.forEach((category) => {
       }
 
       if (newItem) {
-        cart.push({ id: req.params.id, quantity: 1 });
+        cart.push(chosenProduct);
       }
 
       req.session.cartQuantity++;
     }
-
-    category.products.forEach((product) => {
-      if (product.id == req.params.id) product.quantity++;
-    });
 
     console.log("cart:");
     console.log(req.session.cart);

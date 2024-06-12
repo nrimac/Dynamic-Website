@@ -1,5 +1,6 @@
 function updateCart(button) {
   const cartCounter = document.getElementById("cartCounter");
+  const productId = button.parentElement.parentElement.dataset.id;
 
   if (button.innerText === "+") {
     button.parentElement.getElementsByTagName("span")[0].innerText =
@@ -7,15 +8,48 @@ function updateCart(button) {
       1;
 
     cartCounter.innerText = parseInt(cartCounter.innerText) + 1;
-  } else if (
-    button.parentElement.getElementsByTagName("span")[0].innerText != "0"
-  ) {
-    button.parentElement.getElementsByTagName("span")[0].innerText =
-      parseInt(button.parentElement.getElementsByTagName("span")[0].innerText) -
-      1;
 
-    cartCounter.innerText = parseInt(cartCounter.innerText) - 1;
-  }
+    fetch(`/cart/add/${productId}`, {
+      method: "POST",
+      body: JSON.stringify({ productId: productId }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Failed to add product to cart");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    return;
+  } else if (
+    button.parentElement.getElementsByTagName("span")[0].innerText == "0"
+  )
+    return;
+
+  button.parentElement.getElementsByTagName("span")[0].innerText =
+    parseInt(button.parentElement.getElementsByTagName("span")[0].innerText) -
+    1;
+
+  cartCounter.innerText = parseInt(cartCounter.innerText) - 1;
+
+  fetch(`/cart/remove/${productId}`, {
+    method: "POST",
+    body: JSON.stringify({ productId: productId }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to remove product to cart");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
 function initCartButtons() {
@@ -28,47 +62,4 @@ function initCartButtons() {
   }
 }
 
-function setupCart() {
-  const cart = document.querySelector(".kosarica");
-
-  for (let i = 0; i < sessionStorage.length; i++) {
-    data.categories.forEach((category) => {
-      category.products.forEach((product) => {
-        if (product.name == sessionStorage.key(i)) {
-          const newCartDiv = document.createElement("div");
-          const productName = product.name;
-          const productCounter = sessionStorage.getItem(productName);
-
-          newCartDiv.innerHTML = `
-          <div class="cartProduct">
-            <h3>${productName}</h3>
-            <div>
-              <button>+</button>/<button>-</button>
-              <p>Quantity: <span>${productCounter}</span></p>
-            </div>
-          </div>
-          `;
-
-          cart.appendChild(newCartDiv);
-        }
-      });
-    });
-  }
-
-  initCartButtons();
-}
-
-function init() {
-  const cart = document.querySelector(".kosarica");
-
-  if (sessionStorage.getItem("cartCounter") === null) {
-    cart.innerHTML = "<h1>Your cart is empty :(</h1>";
-  } else {
-    const cartCounter = document.getElementById("cartCounter");
-    cartCounter.style = "display: auto";
-    cartCounter.innerText = sessionStorage.getItem("cartCounter");
-    setupCart();
-  }
-}
-
-init();
+window.onload = initCartButtons();

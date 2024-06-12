@@ -6,6 +6,7 @@ const homeRouter = require("./routes/home.routes.js");
 const cartRouter = require("./routes/cart.routes.js");
 
 app.use(express.static("public"));
+app.use(express.json({ limit: "1mb" }));
 app.use(
   session({
     secret: "secret-key",

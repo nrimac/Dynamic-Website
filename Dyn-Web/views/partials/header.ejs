@@ -7,13 +7,15 @@
   </head>
   <body>
     <header>
-      <div class="logo">
-        <img src="/images/logo.png" alt="logo" /> <em>Random Inc.</em>
-      </div>
+      <a href="/home" class="logoLink">
+        <div class="logo">
+          <img src="/images/logo.png" alt="logo" /> <em>Random Inc.</em>
+        </div>
+      </a>
       <div class="naslov"><%= categoryName %></div>
       <div class="search-bar">
         <p id="cartCounter"><%= parseInt(cartQuantity) || 0 %></p>
-        <a href="/cart"><img src="/images/cart.png" alt="cart" /></a>
+        <a href="/cart/getAll"><img src="/images/cart.png" alt="cart" /></a>
         <img src="/images/magnifier.png" alt="magnifier" />
       </div>
     </header>

@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/cart.css" />
+    <link rel="stylesheet" href="/styles/cart.css" />
     <title>Random Inc.</title>
   </head>
   <body>
     <%- include('partials/header') %>
 
-    <div class="kosarica"></div>
+    <div class="kosarica">
+      <% cart.forEach(product => {%>
+      <div class="cartProduct" data-id="<%= product.id %>">
+        <h3><%= product.name %></h3>
+        <div>
+          <button>+</button>/<button>-</button>
+          <p>Quantity: <span><%= product.quantity %></span></p>
+        </div>
+      </div>
+      <% }); %>
+    </div>
   </body>
-  <script defer src="scripts/cart.js"></script>
+  <script defer src="/scripts/cart.js"></script>
 </html>

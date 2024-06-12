@@ -29,6 +29,13 @@ header * {
   margin: 0 2%;
 }
 
+.logoLink {
+  text-decoration: none;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
 .logo {
   display: flex;
   justify-content: center;
