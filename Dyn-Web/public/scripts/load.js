@@ -18,33 +18,17 @@ function setup() {
   for (let i = 0; i < liElements.length; i++) {
     liElements[i].onclick = setup;
   }
-
-  if (
-    sessionStorage.getItem("cartCounter") !== null &&
-    sessionStorage.getItem("cartCounter") !== 0
-  ) {
-    cartCounter.innerText = sessionStorage.getItem("cartCounter");
-    cartCounter.style = "display: flex";
-  } else {
-    cartCounter.style = "display: none";
-  }
 }
 
 function cardClicked() {
   incrementCardCounter(this);
-  incrementCartCounter();
   saveState(this);
-}
 
-function incrementCartCounter() {
-  cartCounter.innerText = parseInt(cartCounter.innerText) + 1;
-  cartCounter.style = "display: flex";
-  sessionStorage.setItem("cartCounter", parseInt(cartCounter.innerText));
+  const productId = this.dataset.id;
+  window.location.href = `${window.location.href}/${productId}`;
 }
 
 function incrementCardCounter(counter) {
-  counter.lastElementChild.style = "display: flex";
-
   counter.lastElementChild.innerText =
     parseInt(counter.lastElementChild.innerText) + 1;
 }

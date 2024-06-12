@@ -221,6 +221,7 @@ main {
 
 .card h5 {
   text-align: center;
+  display: flex;
   font-size: 1.5rem;
   position: absolute;
 

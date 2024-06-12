@@ -10,7 +10,7 @@
     <h1>Kategorije:</h1>
     <ul class="kategorije">
       <% categories.forEach(category => { %>
-      <a href="/home/getProducts/<%= category.name %>">
+      <a href="/home/getProducts/<%= category.name.toLowerCase() %>">
         <li>
           <h3><%= category.name %></h3>
 
